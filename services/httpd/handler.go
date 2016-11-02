@@ -286,6 +286,8 @@ func (h *Handler) serveQuery(w http.ResponseWriter, r *http.Request, user *meta.
 	// Retrieve the node id the query should be executed on.
 	nodeID, _ := strconv.ParseUint(r.FormValue("node_id"), 10, 64)
 
+	fmt.Printf("Form value: [%s]\n", r.FormValue("q"))
+	fmt.Printf("Trimmed form value: [%s]\n", strings.TrimSpace(r.FormValue("q")))
 	var qr io.Reader
 	// Attempt to read the form value from the "q" form value.
 	if qp := strings.TrimSpace(r.FormValue("q")); qp != "" {
